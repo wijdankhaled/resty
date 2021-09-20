@@ -8,7 +8,7 @@ function Form (props)  {
   const [url,setUrl]=useState('https://pokeapi.co/api/v2/pokemon')
   const [reqBody,setReqBody]=useState({})
 
- const handleSubmit = e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     const formData = {
 
