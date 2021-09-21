@@ -19,12 +19,7 @@ function Form (props) {
       reqBody: reqBody
 
     };
-    const getData = await axios({
-      method: method,
-      url: url,
-      reqBody: reqBody
-    });
-    props.handleApiCall(formData,getData);
+    props.handleApiCall(formData);
   }
 
   const itemSelect=(e)=>{
@@ -38,32 +33,32 @@ function Form (props) {
     setReqBody(e.target.value)
   }
   
-    return (
-      <>
-        <form onSubmit={handleSubmit}>
-          <label className="methods" for='select' >
-            Select Your Method
-          </label>
-          <select name="select" id='select' onChange={itemSelect}>
-            <option id="get" value='get'>GET</option>
-            <option id="post" value='post'>POST</option>
-            <option id="put" value='put'>PUT</option>
-            <option id="delete" value='delete'>DELETE</option>
-          </select>
-          <label  >
-            <span>URL: </span>
-            <input name='url' type='text' onChange={urlHandler} />
-            <button type="submit">GO!</button>
-          </label>
-             {
-            (method=='post'||method=='put')?<textarea id="text" name="text" rows="4" cols="50" defaultValue=' {"object":"Write JSON For Post ,Put Method,,,
-            (For Test Use Method Get For :https://pokeapi.co/api/v2/pokemon)"}' 
-            onChange={reqBodyHandler}>
-            </textarea>:''
-          }
-        </form>
-      </>
-    );
+  return (
+    <>
+      <form onSubmit={handleSubmit}>
+        <label className="methods" for='select' >
+          Select Your Method
+        </label>
+        <select name="select" id='select' onChange={itemSelect}>
+          <option id="get" value='get'>GET </option>
+          <option id="post" value='post'>POST </option>
+          <option id="put" value='put'>PUT </option>
+          <option id="delete" value='delete'>DELETE </option>
+        </select>
+        <label  >
+          <span>URL: </span>
+          <input name='url' type='text' onChange={urlHandler} />
+          <button type="submit">GO!</button>
+        </label>
+           {
+          (method=='post'||method=='put')?<textarea id="text" name="text" rows="4" cols="50" defaultValue=' {"object":"Write JSON For Post ,Put Method,,,
+          (For Test Use Method Get For :https://pokeapi.co/api/v2/pokemon)"}' 
+          onChange={reqBodyHandler}>
+          </textarea>:''
+        }
+      </form>
+    </>
+  );
   
 }
 
